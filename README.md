@@ -14,9 +14,9 @@ Ports `5800 5900 6003` are exposed by default in this container.
 
 | Port | Mapping to host | Description |
 |------|-----------------|-------------|
-| `5800` | MANDATORY | Port used to access the application's GUI via the web interface.|
+| `5800` | Mandatory | Port used to access the application's GUI via the web interface.|
 | `5900` | Optional | Port used to access the application's GUI via the VNC protocol.  Optional if no VNC client is used. |
-| `6003` | MANDATORY | Port used to serve ZMQ data |
+| `6003` | Mandatory | Port used to serve ZMQ data to JAERO. |
 
 ## Volumes
 
