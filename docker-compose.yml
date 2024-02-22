@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  sdrreceiver:
+    image: ghcr.io/sdr-enthusiasts/docker-sdrreceiver:latest
+    tty: true
+    container_name: sdrreceiver
+    hostname: sdrreceiver
+    restart: always
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    ports:
+    - 5800:5800
+    - 6003:6003
+    environment:
+      - TZ=${TZ}
+      - VNC_PASSWORD=${VNC_PASSWORD}
+      - CONFIG_FILE=${CONFIG_FILE}
+    volumes:
+      - ${PWD}/${CONFIG_FILE}:/${CONFIG_FILE:?error}
+    tmpfs:
+      - /run:exec,size=64M
+      - /var/log,size=32M
+      - /tmp:exec
