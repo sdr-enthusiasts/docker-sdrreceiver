@@ -1,0 +1,36 @@
+---
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    # Don't trigger if it's just a documentation update
+    paths:
+      - "Dockerfile**"
+      - "rootfs/**"
+
+env:
+  GHCR_IMAGE: sdr-enthusiasts/sdrreceiver
+  GHCR_REGISTRY: ghcr.io
+  GH_LABEL: main
+  GHCR_TAG: latest
+
+jobs:
+  deploy:
+    name: Deploy 
+    uses: sdr-enthusiasts/common-github-workflows/.github/workflows/build_and_push_image.yml@main
+    with:
+      push_enabled: true
+      push_destinations: ghcr.io
+      ghcr_repo_owner: ${{ github.repository_owner }}
+      ghcr_repo: ${{ github.repository }}
+      get_version_method: file_in_container:file=/CONTAINER_VERSION
+      build_version_specific: false
+      build_platform_specific: false
+      build_nohealthcheck: true
+    secrets:
+      ghcr_token: ${{ secrets.GITHUB_TOKEN }}
+
