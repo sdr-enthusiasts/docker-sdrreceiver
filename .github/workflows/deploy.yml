@@ -13,7 +13,7 @@ on:
       - "rootfs/**"
 
 env:
-  GHCR_IMAGE: sdr-enthusiasts/sdrreceiver
+  GHCR_IMAGE: sdr-enthusiasts/docker-sdrreceiver
   GHCR_REGISTRY: ghcr.io
   GH_LABEL: main
   GHCR_TAG: latest
