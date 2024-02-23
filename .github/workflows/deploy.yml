@@ -40,7 +40,7 @@ jobs:
       get_version_method: file_in_container:file=/CONTAINER_VERSION
       build_version_specific: false
       build_platform_specific: false
-      build_nohealthcheck: true
+      build_nohealthcheck: false
     secrets:
       ghcr_token: ${{ secrets.GITHUB_TOKEN }}
 
