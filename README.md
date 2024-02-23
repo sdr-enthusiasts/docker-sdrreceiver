@@ -1,6 +1,6 @@
 # Docker SDRReceiver
 
-Docker container for running [SDRReceiver](https://github.com/jeroenbeijer/SDRReceiver).
+Docker container for [SDRReceiver](https://github.com/jeroenbeijer/SDRReceiver).
 
 ---
 
