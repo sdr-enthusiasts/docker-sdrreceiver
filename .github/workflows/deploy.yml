@@ -22,6 +22,12 @@ jobs:
   workflow-dispatch:
     name: Triggered via Workflow Dispatch
     runs-on: ubuntu-latest
+    steps:
+      - name: Log dispatch reason
+        env:
+          INPUTS_REASON: ${{ github.event.inputs.reason }}
+        run: |
+          echo "Workflow dispatch reason: $INPUTS_REASON"
 
   deploy:
     name: Deploy 
