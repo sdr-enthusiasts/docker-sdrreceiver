@@ -19,6 +19,17 @@ env:
   GHCR_TAG: latest
 
 jobs:
+  workflow-dispatch:
+    name: Triggered via Workflow Dispatch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log dispatch reason
+        env:
+          INPUTS_REASON: ${{ github.event.inputs.reason }}
+        run: |
+          echo "Workflow dispatch reason: $INPUTS_REASON"
+          echo "Use test image: $INPUTS_USE_TEST_IMAGE"
+
   deploy:
     name: Deploy 
     uses: sdr-enthusiasts/common-github-workflows/.github/workflows/build_and_push_image.yml@main
