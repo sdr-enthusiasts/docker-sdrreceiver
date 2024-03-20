@@ -2,6 +2,7 @@ FROM jlesage/baseimage-gui:debian-11-v4.5.3
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# hadolint ignore=DL3008
 RUN set -x && \
     TEMP_PACKAGES=() && \
     KEPT_PACKAGES=() && \
@@ -46,8 +47,8 @@ RUN set -x && \
 
     apt-get update && \
     apt-get install -y --no-install-recommends \
-        ${KEPT_PACKAGES[@]} \
-        ${TEMP_PACKAGES[@]} \
+        "${KEPT_PACKAGES[@]}" \
+        "${TEMP_PACKAGES[@]}" \
         && \
 
     # RTLSDR - Clone and build
@@ -83,9 +84,6 @@ RUN set -x && \
     find /var/log -type f -exec truncate --size=0 {} \; && \
 
     set-cont-env APP_NAME "SDRReceiver"
-
-ENV DISPLAY_WIDTH=1280 \
-    DISPLAY_HEIGHT=720
 
 EXPOSE 5800 5900 6003
 
