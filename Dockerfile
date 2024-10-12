@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:debian-11-v4.5.3
+FROM jlesage/baseimage-gui:debian-11-v4.6.4
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
