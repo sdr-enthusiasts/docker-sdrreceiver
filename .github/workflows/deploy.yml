@@ -30,7 +30,7 @@ jobs:
           echo "Workflow dispatch reason: $INPUTS_REASON"
 
   deploy:
-    name: Deploy 
+    name: Deploy
     uses: sdr-enthusiasts/common-github-workflows/.github/workflows/build_and_push_image.yml@main
     with:
       push_enabled: true
@@ -43,4 +43,3 @@ jobs:
       build_nohealthcheck: false
     secrets:
       ghcr_token: ${{ secrets.GITHUB_TOKEN }}
-

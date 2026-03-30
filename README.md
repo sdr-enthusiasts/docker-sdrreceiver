@@ -12,11 +12,11 @@ This container is based on the absolutely fantastic [jlesage/baseimage-gui](http
 
 Ports `5800 5900 6003` are exposed by default in this container.
 
-| Port | Mapping to host | Description |
-|------|-----------------|-------------|
-| `5800` | Mandatory | Port used to access the application's GUI via the web interface.|
-| `5900` | Optional  | Port used to access the application's GUI via the VNC protocol.  Optional if no VNC client is used. |
-| `6003` | Mandatory | Port used to serve ZMQ data to JAERO. |
+| Port   | Mapping to host | Description                                                                                        |
+| ------ | --------------- | -------------------------------------------------------------------------------------------------- |
+| `5800` | Mandatory       | Port used to access the application's GUI via the web interface.                                   |
+| `5900` | Optional        | Port used to access the application's GUI via the VNC protocol. Optional if no VNC client is used. |
+| `6003` | Mandatory       | Port used to serve ZMQ data to JAERO.                                                              |
 
 ## Volumes
 
@@ -35,7 +35,8 @@ cd docker-sdrreceiver
 wget https://raw.githubusercontent.com/sdr-enthusiasts/docker-sdrreceiver/main/docker-compose.yml
 wget https://raw.githubusercontent.com/sdr-enthusiasts/docker-sdrreceiver/main/.env
 ```
-- Add SDRReceiver ini file to  docker-sdrreceiver directory. 
+
+- Add SDRReceiver ini file to docker-sdrreceiver directory.
 - Edit the `docker-compose.yml` and `.env` files and make any changes as needed. Please configure ALL variables in `.env`. Very important that CONFIG_FILE setting matches SDRReceiver ini file added in previous step.
 
 Start the Container
@@ -43,4 +44,5 @@ Start the Container
 ```bash
 docker compose up -d
 ```
+
 - Browse to `http://your-host-ip:5800` to access the GUI.
