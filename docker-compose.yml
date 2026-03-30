@@ -10,8 +10,8 @@ services:
     devices:
       - /dev/bus/usb:/dev/bus/usb
     ports:
-    - 5800:5800
-    - 6003:6003
+      - 5800:5800
+      - 6003:6003
     environment:
       - TZ=${TZ}
       - VNC_PASSWORD=${VNC_PASSWORD}
