@@ -31,7 +31,7 @@ jobs:
 
   deploy:
     name: Deploy
-    uses: sdr-enthusiasts/common-github-workflows/.github/workflows/build_and_push_image.yml@main
+    uses: sdr-enthusiasts/common-github-workflows/.github/workflows/sdre.yml@main
     with:
       push_enabled: true
       push_destinations: ghcr.io
@@ -41,5 +41,6 @@ jobs:
       build_version_specific: false
       build_platform_specific: false
       build_nohealthcheck: false
+      platform_linux_arm32v7_enabled: false
     secrets:
       ghcr_token: ${{ secrets.GITHUB_TOKEN }}

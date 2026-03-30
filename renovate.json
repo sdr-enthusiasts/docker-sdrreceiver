@@ -30,7 +30,8 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["/^ghcr\\.io/sdr-enthusiasts/.*$/"],
-      "enabled": false
+      "enabled": true,
+      "automerge": true
     }
   ]
 }
