@@ -79,3 +79,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.direnv
+.pre-commit-config.yaml
