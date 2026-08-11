@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:debian-13-v4.11.3
+FROM jlesage/baseimage-gui:debian-13-v4.13.1@sha256:e5a0b896a9afb6989da1ad532c855d06b3968db841dfe72b37d2f6a82401e414
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -41,6 +41,11 @@ RUN set -x && \
     KEPT_PACKAGES+=(libqcustomplot2.1) && \
     TEMP_PACKAGES+=(wget) && \
     KEPT_PACKAGES+=(unzip) && \
+    # The base image ships /var/log as a symlink to /config/log, which does not
+    # exist at build time. Debian maintainer scripts (fontconfig.postinst) write
+    # there and fail with "Directory nonexistent", which cascades into every Qt
+    # package that depends on fontconfig. Create the target before installing.
+    mkdir -p /config/log && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         "${KEPT_PACKAGES[@]}" \
@@ -73,7 +78,9 @@ RUN set -x && \
     apt-get remove -y "${TEMP_PACKAGES[@]}" && \
     apt-get autoremove -y && \
     rm -rf /src/* /tmp/* /var/lib/apt/lists/* && \
-    find /var/log -type f -exec truncate --size=0 {} \; && \
+    # Trailing slash is required: /var/log is a symlink, and find does not
+    # follow it without one (the old symlink-less form silently matched nothing).
+    find /var/log/ -type f -exec truncate --size=0 {} \; && \
     set-cont-env APP_NAME "SDRReceiver"
 
 EXPOSE 5800 5900 6003
