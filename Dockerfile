@@ -1,4 +1,4 @@
-FROM jlesage/baseimage-gui:debian-13-v4.13.1@sha256:e5a0b896a9afb6989da1ad532c855d06b3968db841dfe72b37d2f6a82401e414
+FROM jlesage/baseimage-gui:debian-13-v4.14.0@sha256:887c603e603eb14f9dc18a0d8076b465a38504da0b57317c1fb402f3bc7ebd05
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
