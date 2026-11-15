@@ -3,6 +3,10 @@ name: Deploy
 
 on:
   workflow_dispatch:
+    inputs:
+      reason:
+        required: true
+        description: "Reason for running this workflow"
 
   push:
     branches:
