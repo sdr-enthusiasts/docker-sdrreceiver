@@ -35,7 +35,7 @@ jobs:
 
   deploy:
     name: Deploy
-    uses: sdr-enthusiasts/common-github-workflows/.github/workflows/sdre.yml@4cf063e5906338b3b92f0fe71d8dbae52c180d99 # main
+    uses: sdr-enthusiasts/common-github-workflows/.github/workflows/sdre.yml@2c6ff7fabb49cc277aa6dbe4cca0fe3be63a21b0 # main
     with:
       push_enabled: true
       push_destinations: ghcr.io
